@@ -114,6 +114,8 @@ function flatterIconPositions(icon) {
   }, []);
 }
 
+const nop = (...args: any[]) => ''
+
 export default class IconLayer extends Layer {
   getIconAccessor: (dataContainer: DataContainerInterface) => (d: any) => any;
   _layerInfoModal: () => JSX.Element;
@@ -378,9 +380,7 @@ export default class IconLayer extends Layer {
                   ...layerProps,
                   data: [hoveredObject],
                   parameters,
-                  getPosition: data.getPosition,
-                  getRadius: data.getRadius,
-                  getFillColor: this.config.highlightColor,
+                  getIcon: nop,
                   getIconGeometry: id => this.iconGeometry?.[id]
                 })
               ]

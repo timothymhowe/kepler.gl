@@ -212,7 +212,6 @@ export default class LineLayer extends ArcLayer {
               ...layerProps,
               data: [hoveredObject],
               getColor: this.config.highlightColor,
-              getTargetColor: this.config.highlightColor,
               getWidth: data.getWidth
             })
           ]
