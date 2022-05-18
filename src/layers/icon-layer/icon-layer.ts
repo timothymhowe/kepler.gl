@@ -114,7 +114,7 @@ function flatterIconPositions(icon) {
   }, []);
 }
 
-const nop = (...args: any[]) => ''
+const nop = (...args: any[]) => '';
 
 export default class IconLayer extends Layer {
   getIconAccessor: (dataContainer: DataContainerInterface) => (d: any) => any;
