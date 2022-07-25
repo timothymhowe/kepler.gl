@@ -42,21 +42,21 @@ import {
   updateMapboxLayers,
   Layer,
   LayerBaseConfig,
-  VisualChannelDomain
+  getLayerHoverProp,
+  renderDeckGlLayer,
+  prepareLayersToRender,
+  prepareLayersForDeck,
+  LayerHoverProp,
+  VisualChannelDomain,
+  Datasets
 } from '@kepler.gl/layers';
 import {Filter, InteractionConfig, MapState, SplitMapLayers} from '@kepler.gl/types';
 import {
   errorNotification,
   setLayerBlending,
   transformRequest,
-  getLayerHoverProp,
-  renderDeckGlLayer,
-  prepareLayersToRender,
-  prepareLayersForDeck,
-  LayerHoverProp,
   observeDimensions,
-  unobserveDimensions,
-  Datasets
+  unobserveDimensions
 } from '../utils';
 
 // default-settings

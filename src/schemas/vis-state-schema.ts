@@ -21,7 +21,7 @@
 import pick from 'lodash.pick';
 import {VERSIONS} from './versions';
 import {LAYER_VIS_CONFIGS} from '@kepler.gl/constants';
-import {isValidFilterValue, notNullorUndefined} from '../utils';
+import {isValidFilterValue, notNullorUndefined} from '@kepler.gl/layers';
 import Schema from './schema';
 import cloneDeep from 'lodash.clonedeep';
 

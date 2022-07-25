@@ -23,7 +23,7 @@ import styled from 'styled-components';
 import AnimationSpeedSliderFactory from './animation-speed-slider';
 import {Button, CenterFlexbox} from 'components/common/styled-components';
 import {Rocket} from 'components/common/icons';
-import {preciseRound} from '../../../utils';
+import {preciseRound} from '@kepler.gl/layers';
 
 const StyledSpeedToggle = styled.div`
   display: flex;

@@ -48,21 +48,9 @@ import {
   DEFAULT_LAYER_LABEL
 } from '@kepler.gl/constants';
 
-import {
-  generateHashId,
-  isPlainObject,
-  getLatLngBounds,
-  notNullorUndefined,
-  getSampleData,
-  getColorGroupByName,
-  reverseColorRange,
-  KeplerTable,
-  DataContainerInterface,
-  GpuFilter,
-  Datasets
-} from '../../utils';
+import {generateHashId, getColorGroupByName, reverseColorRange} from '../../utils';
 
-import {hexToRgb} from '../../utils/color-utils';
+import {hexToRgb} from '../../utils';
 
 import {
   RGBColor,
@@ -77,6 +65,14 @@ import {
   MapState,
   Filter
 } from '@kepler.gl/types';
+import KeplerTable, {Datasets, GpuFilter} from './layer-utils/table-utils/kepler-table';
+import {DataContainerInterface} from './layer-utils/table-utils/data-container-interface';
+import {
+  getLatLngBounds,
+  getSampleData,
+  isPlainObject,
+  notNullorUndefined
+} from './layer-utils/data-utils';
 
 export type LayerColumn = {value: string | null; fieldIdx: number; optional?: boolean};
 

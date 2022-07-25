@@ -18,16 +18,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import {
-  FindDefaultLayerPropsReturnValue,
-  Layer,
-  LayerClassesType,
-  OVERLAY_TYPE_CONST
-} from '@kepler.gl/layers';
+import Layer, {FindDefaultLayerPropsReturnValue, OVERLAY_TYPE_CONST} from '../base-layer';
 import {GEOCODER_LAYER_ID} from '@kepler.gl/constants';
 import {Field, TooltipField, CompareType, SplitMapLayers, InteractionConfig} from '@kepler.gl/types';
 
 import KeplerTable, { Datasets } from './table-utils/kepler-table';
+import { LayerClassesType } from '..';
 
 export type LayersToRender = {
   [layerId: string]: boolean;

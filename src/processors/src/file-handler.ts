@@ -25,6 +25,7 @@ import {CSVLoader} from '@loaders.gl/csv';
 import {processGeojson, processKeplerglJSON, processRowObject} from './data-processor';
 import {isPlainObject, generateHashId} from '../../utils/utils';
 import {DATASET_FORMATS} from '@kepler.gl/constants';
+import {isPlainObject} from '@kepler.gl/layers';
 import {LoaderObject} from '@loaders.gl/loader-utils';
 import {AddDataToMapPayload} from '../../actions/actions';
 import {FileCacheItem, ValidKeplerGlMap} from './types';

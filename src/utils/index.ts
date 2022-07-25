@@ -20,31 +20,12 @@
 
 // UTILS
 export {errorNotification, createNotification, exportImageError, successNotification} from './notifications-utils';
-export {dataURItoBlob, downloadFile, calculateExportImageSize} from './export-utils';
 
-export {
-  default as KeplerTable,
-  findPointFieldPairs,
-  copyTableAndUpdate,
-  pinTableColumns,
-  sortDatasetByColumn,
-  copyTable,
-} from './table-utils/kepler-table';
-export type {GpuFilter, Datasets} from './table-utils/kepler-table';
-export {createDataContainer, createIndexedDataContainer, getSampleData as getSampleContainerData} from './table-utils/data-container-utils';
-export type {DataContainerInterface} from './table-utils/data-container-interface';
+export {default as domtoimage} from './dom-to-image';
 
 export * from './aggregate-utils';
 export * from './color-utils';
-export * from './data-scale-utils';
-export * from './data-utils';
-export * from './dataset-utils';
-export * from './export-utils';
-export * from './filter-utils';
-export * from './gpu-filter-utils';
 export * from './gl-utils';
-export * from './interaction-utils';
-export * from './layer-utils';
 export * from './locale-utils';
 export * from './observe-dimensions';
 export * from './projection-utils';

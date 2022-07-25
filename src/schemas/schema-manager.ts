@@ -26,7 +26,7 @@ import mapStyleSchema from './map-style-schema';
 import mapStateSchema from './map-state-schema';
 
 import {CURRENT_VERSION, VERSIONS} from './versions';
-import {isPlainObject} from '../utils';
+import {isPlainObject} from '@kepler.gl/layers';
 
 import {
   InteractionConfig,
@@ -34,10 +34,12 @@ import {
   TooltipInfo,
   SplitMap,
   AnimationConfig,
-  MapInfo
+  MapInfo,
+  RGBColor, 
+  Merge, 
+  RGBAColor, 
+  LayerTextLabel
 } from '@kepler.gl/types';
-
-import {RGBColor, Merge, RGBAColor, LayerTextLabel} from '@kepler.gl/types';
 
 export type SavedFilter = {
   dataId: Filter['dataId'];

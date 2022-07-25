@@ -27,7 +27,7 @@ import {
   notNullorUndefined,
   getTooltipDisplayValue,
   getTooltipDisplayDeltaValue
-} from '../../utils';
+} from '@kepler.gl/layers';
 
 export const StyledLayerName = styled(CenterFlexbox)`
   color: ${props => props.theme.textColorHl};
