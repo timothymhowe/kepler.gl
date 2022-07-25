@@ -37,7 +37,7 @@ import VisConfigSliderFactory from './vis-config-slider';
 import LayerConfigGroupFactory, {ConfigGroupCollapsibleContent} from './layer-config-group';
 import TextLabelPanelFactory from './text-label-panel';
 
-import {capitalizeFirstLetter} from '../../../utils';
+import {capitalizeFirstLetter} from '@kepler.gl/utils';
 
 import {CHANNEL_SCALE_SUPPORTED_FIELDS, ColorRange} from '@kepler.gl/constants';
 import {

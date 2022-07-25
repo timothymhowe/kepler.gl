@@ -57,7 +57,7 @@ import {
   transformRequest,
   observeDimensions,
   unobserveDimensions
-} from '../utils';
+} from '@kepler.gl/utils';
 
 // default-settings
 import {ThreeDBuildingLayer} from '@kepler.gl/deckgl-layers';

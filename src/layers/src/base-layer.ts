@@ -48,9 +48,7 @@ import {
   DEFAULT_LAYER_LABEL
 } from '@kepler.gl/constants';
 
-import {generateHashId, getColorGroupByName, reverseColorRange} from '../../utils';
-
-import {hexToRgb} from '../../utils';
+import {generateHashId, getColorGroupByName, reverseColorRange, hexToRgb} from '@kepler.gl/utils';
 
 import {
   RGBColor,

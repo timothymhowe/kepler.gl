@@ -23,7 +23,7 @@ import {console as globalConsole} from 'global/window';
 
 import {VERSIONS} from './versions';
 import Schema from './schema';
-import {getFieldsFromData, getSampleForTypeAnalyze} from '@kepler.gl/processors';
+import {getFieldsFromData, getSampleForTypeAnalyze} from '@kepler.gl/layers';
 
 // version v0
 const fieldPropertiesV0 = {

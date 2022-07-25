@@ -19,7 +19,12 @@
 // THE SOFTWARE.
 
 // UTILS
-export {errorNotification, createNotification, exportImageError, successNotification} from './notifications-utils';
+export {
+  errorNotification,
+  createNotification,
+  exportImageError,
+  successNotification
+} from './notifications-utils';
 
 export {default as domtoimage} from './dom-to-image';
 
