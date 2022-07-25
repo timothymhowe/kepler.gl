@@ -25,10 +25,9 @@ import {
   OVERLAY_TYPE_CONST
 } from '@kepler.gl/layers';
 import {GEOCODER_LAYER_ID} from '@kepler.gl/constants';
-import {Field} from '@kepler.gl/types';
-import {VisState, TooltipField, CompareType, SplitMapLayers} from 'reducers';
+import {Field, TooltipField, CompareType, SplitMapLayers, InteractionConfig} from '@kepler.gl/types';
 
-import KeplerTable from './table-utils/kepler-table';
+import KeplerTable, { Datasets } from './table-utils/kepler-table';
 
 export type LayersToRender = {
   [layerId: string]: boolean;
@@ -87,7 +86,7 @@ export function findDefaultLayer(dataset: KeplerTable, layerClasses: LayerClasse
  */
 export function calculateLayerData(
   layer: Layer,
-  state: VisState,
+  state: {datasets: Datasets},
   oldLayerData?: any
 ): {
   layerData: any;
@@ -114,11 +113,11 @@ export function getLayerHoverProp({
   layersToRender,
   datasets
 }: {
-  interactionConfig: VisState['interactionConfig'];
-  hoverInfo: VisState['hoverInfo'];
-  layers: VisState['layers'];
+  interactionConfig: InteractionConfig;
+  hoverInfo: any;
+  layers: Layer[];
   layersToRender: LayersToRender;
-  datasets: VisState['datasets'];
+  datasets: Datasets;
 }): LayerHoverProp | null {
   if (interactionConfig.tooltip.enabled && hoverInfo && hoverInfo.picked) {
     // if anything hovered
@@ -200,7 +199,7 @@ export function isLayerVisible(layer, mapLayers) {
 // return {[id]: true \ false}
 export function prepareLayersForDeck(
   layers: Layer[],
-  layerData: VisState['layerData']
+  layerData: any[]
 ): {
   [key: string]: boolean;
 } {
@@ -219,7 +218,7 @@ export function prepareLayersForDeck(
 // return {[id]: true \ false}
 export function prepareLayersToRender(
   layers: Layer[],
-  layerData: VisState['layerData'],
+  layerData: any[],
   mapLayers?: SplitMapLayers
 ): {
   [key: string]: boolean;

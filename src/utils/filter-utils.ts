@@ -39,20 +39,18 @@ import {
   Filter,
   FilterBase,
   PolygonFilter,
-  Datasets,
   FieldDomain,
   TimeRangeFieldDomain,
   HistogramBin,
   Feature,
   FeatureValue,
-  VisState,
   LineChart,
   TimeRangeFilter,
   RangeFieldDomain
-} from 'reducers';
+} from '@kepler.gl/types';
 
 import {ParsedFilter} from 'schemas';
-import KeplerTable, {FilterRecord, FilterDatasetOpt} from './table-utils/kepler-table';
+import KeplerTable, {FilterRecord, Datasets, FilterDatasetOpt} from './table-utils/kepler-table';
 import {DataContainerInterface} from './table-utils/data-container-interface';
 
 export type FilterResult = {
@@ -245,7 +243,6 @@ export function validateFilter(
     return failed;
   }
 
-  // @ts-expect-error
   const initializeFilter: Filter = {
     // @ts-expect-error
     ...getDefaultFilter(filter.dataId),
@@ -357,7 +354,6 @@ export function getFilterProps(
       };
 
     case ALL_FIELD_TYPES.boolean:
-      // @ts-expect-error
       return {
         ...filterProps,
         type: FILTER_TYPES.select,
@@ -367,7 +363,6 @@ export function getFilterProps(
 
     case ALL_FIELD_TYPES.string:
     case ALL_FIELD_TYPES.date:
-      // @ts-expect-error
       return {
         ...filterProps,
         type: FILTER_TYPES.multiSelect,
@@ -376,7 +371,6 @@ export function getFilterProps(
       };
 
     case ALL_FIELD_TYPES.timestamp:
-      // @ts-expect-error
       return {
         ...filterProps,
         type: FILTER_TYPES.timeRange,
@@ -1073,7 +1067,13 @@ export function generatePolygonFilter(layers: Layer[], feature: Feature): Polygo
 /**
  * Run filter entirely on CPU
  */
-export function filterDatasetCPU(state: VisState, dataId: string): VisState {
+interface StateType {
+  layers: Layer[];
+  filters: Filter[];
+  datasets: Datasets;
+}
+
+export function filterDatasetCPU<T extends StateType>(state: T, dataId: string): T {
   const datasetFilters = state.filters.filter(f => f.dataId.includes(dataId));
   const dataset = state.datasets[dataId];
 
@@ -1090,7 +1090,7 @@ export function filterDatasetCPU(state: VisState, dataId: string): VisState {
  * Validate parsed filters with datasets and add filterProps to field
  */
 export function validateFiltersUpdateDatasets(
-  state: VisState,
+  state: {datasets: Datasets, layers: Layer[]},
   filtersToValidate: ParsedFilter[] = []
 ): {
   validated: Filter[];

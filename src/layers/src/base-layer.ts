@@ -58,12 +58,12 @@ import {
   reverseColorRange,
   KeplerTable,
   DataContainerInterface,
-  GpuFilter
+  GpuFilter,
+  Datasets
 } from '../../utils';
 
 import {hexToRgb} from '../../utils/color-utils';
 
-import {Filter, Datasets} from 'reducers';
 import {
   RGBColor,
   RGBAColor,
@@ -74,7 +74,8 @@ import {
   LayerVisConfig,
   LayerVisConfigSettings,
   Field,
-  MapState
+  MapState,
+  Filter
 } from '@kepler.gl/types';
 
 export type LayerColumn = {value: string | null; fieldIdx: number; optional?: boolean};

@@ -37,7 +37,8 @@ import MapControlPanelFactory from './map-control-panel';
 import MapControlToolbarFactory from './map-control-toolbar';
 import {FormattedMessage} from '@kepler.gl/localization';
 import TippyTooltip from 'components/common/tippy-tooltip';
-import {Editor, MapControls} from 'reducers';
+import {MapControls} from 'reducers';
+import {Editor} from '@kepler.gl/types';
 import {BaseProps} from 'components/common/icons/base';
 
 MapDrawPanelFactory.deps = [

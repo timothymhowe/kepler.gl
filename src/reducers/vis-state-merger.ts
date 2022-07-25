@@ -29,17 +29,18 @@ import {
   getInitialMapLayersForSplitMap,
   resetFilterGpuMode,
   assignGpuChannels,
-  KeplerTable
+  KeplerTable,
+  Datasets
 } from '../utils';
 
 import {LayerColumns, LayerColumn} from '@kepler.gl/layers';
 import {LAYER_BLENDINGS} from '@kepler.gl/constants';
 import {CURRENT_VERSION, visStateSchema} from 'schemas';
 
-import {VisState, Datasets} from './vis-state-updaters';
+import {VisState} from './vis-state-updaters';
 import {ParsedConfig, ParsedLayer} from 'schemas';
 import {Layer} from '@kepler.gl/layers';
-import {TooltipInfo} from './vis-state-updaters';
+import {TooltipInfo} from '@kepler.gl/types';
 import {SavedInteractionConfig} from 'schemas/schema-manager';
 
 export type Merger = {
