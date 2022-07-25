@@ -33,7 +33,7 @@ import {
 } from 'test/helpers/layer-utils';
 
 import {KeplerGlLayers} from '@kepler.gl/layers';
-import {copyTableAndUpdate} from '../utils';
+import {copyTableAndUpdate} from '../../../src/utils';
 
 const {ArcLayer} = KeplerGlLayers;
 const columns = {

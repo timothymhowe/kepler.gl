@@ -19,7 +19,7 @@
 // THE SOFTWARE.
 
 // UTILS
-export {errorNotification, createNotification, exportImageError} from './notifications-utils';
+export {errorNotification, createNotification, exportImageError, successNotification} from './notifications-utils';
 export {dataURItoBlob, downloadFile, calculateExportImageSize} from './export-utils';
 
 export {
@@ -27,7 +27,8 @@ export {
   findPointFieldPairs,
   copyTableAndUpdate,
   pinTableColumns,
-  sortDatasetByColumn
+  sortDatasetByColumn,
+  copyTable
 } from './table-utils/kepler-table';
 export type {GpuFilter} from './table-utils/kepler-table';
 export {createDataContainer, createIndexedDataContainer, getSampleData as getSampleContainerData} from './table-utils/data-container-utils';

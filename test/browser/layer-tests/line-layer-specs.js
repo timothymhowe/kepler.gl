@@ -32,7 +32,7 @@ import {
 } from 'test/helpers/layer-utils';
 
 import {KeplerGlLayers} from '@kepler.gl/layers';
-import {copyTable, copyTableAndUpdate} from '../utils';
+import {copyTable, copyTableAndUpdate} from '../../../src/utils';
 
 const {LineLayer} = KeplerGlLayers;
 const columns = {
