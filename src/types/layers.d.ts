@@ -69,6 +69,18 @@ export type Field = {
   filterProps?: any;
   metadata?: any;
 };
+
+export type FieldPair = {
+  defaultName: string;
+  pair: {
+    [key: string]: {
+      fieldIdx: number;
+      value: string;
+    };
+  };
+  suffix: string[];
+};
+
 import {
   LayerBaseConfig,
   LayerColorConfig,

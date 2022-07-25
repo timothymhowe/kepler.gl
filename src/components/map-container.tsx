@@ -44,6 +44,7 @@ import {
   LayerBaseConfig,
   VisualChannelDomain
 } from '@kepler.gl/layers';
+import {MapState} from '@kepler.gl/types';
 import {
   errorNotification,
   setLayerBlending,
@@ -68,7 +69,6 @@ import {
   Filter,
   InteractionConfig,
   MapControls,
-  MapState,
   MapStyle,
   Viewport
 } from 'reducers';

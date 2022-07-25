@@ -54,16 +54,16 @@ import {
   getLatLngBounds,
   notNullorUndefined,
   getSampleData,
-  hexToRgb,
   getColorGroupByName,
   reverseColorRange,
   KeplerTable,
   DataContainerInterface,
-  Field,
   GpuFilter
-} from '../utils';
+} from '../../utils';
 
-import {MapState, Filter, Datasets} from 'reducers';
+import {hexToRgb} from '../../utils/color-utils';
+
+import {Filter, Datasets} from 'reducers';
 import {
   RGBColor,
   RGBAColor,
@@ -72,7 +72,9 @@ import {
   LayerTextLabel,
   ColorUI,
   LayerVisConfig,
-  LayerVisConfigSettings
+  LayerVisConfigSettings,
+  Field,
+  MapState
 } from '@kepler.gl/types';
 
 export type LayerColumn = {value: string | null; fieldIdx: number; optional?: boolean};
