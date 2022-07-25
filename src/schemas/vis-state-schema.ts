@@ -20,11 +20,10 @@
 
 import pick from 'lodash.pick';
 import {VERSIONS} from './versions';
-import {isValidFilterValue} from 'utils/filter-utils';
 import {LAYER_VIS_CONFIGS} from '@kepler.gl/constants';
+import {isValidFilterValue, notNullorUndefined} from '../utils';
 import Schema from './schema';
 import cloneDeep from 'lodash.clonedeep';
-import {notNullorUndefined} from 'utils/data-utils';
 
 /**
  * V0 Schema

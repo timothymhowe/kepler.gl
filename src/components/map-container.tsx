@@ -24,7 +24,6 @@ import MapboxGLMap, {MapRef} from 'react-map-gl';
 import DeckGL from '@deck.gl/react';
 import {createSelector} from 'reselect';
 import WebMercatorViewport from 'viewport-mercator-project';
-import {errorNotification} from 'utils/notifications-utils';
 
 import * as VisStateActions from 'actions/vis-state-actions';
 import * as MapStateActions from 'actions/map-state-actions';
@@ -45,22 +44,24 @@ import {
   LayerBaseConfig,
   VisualChannelDomain
 } from '@kepler.gl/layers';
-import {setLayerBlending} from 'utils/gl-utils';
-import {transformRequest} from 'utils/map-style-utils/mapbox-utils';
 import {
+  errorNotification,
+  setLayerBlending,
+  transformRequest,
   getLayerHoverProp,
   renderDeckGlLayer,
   prepareLayersToRender,
   prepareLayersForDeck,
-  LayerHoverProp
-} from 'utils/layer-utils';
+  LayerHoverProp,
+  observeDimensions,
+  unobserveDimensions
+} from '../utils';
 
 // default-settings
 import {ThreeDBuildingLayer} from '@kepler.gl/deckgl-layers';
 import {FILTER_TYPES, GEOCODER_LAYER_ID, THROTTLE_NOTIFICATION_TIME} from '@kepler.gl/constants';
 
 import ErrorBoundary from 'components/common/error-boundary';
-import {observeDimensions, unobserveDimensions} from '../utils/observe-dimensions';
 import {LOCALE_CODES} from '@kepler.gl/localization';
 import {
   Datasets,

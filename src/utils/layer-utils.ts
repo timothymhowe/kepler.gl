@@ -25,7 +25,8 @@ import {
   OVERLAY_TYPE_CONST
 } from '@kepler.gl/layers';
 import {GEOCODER_LAYER_ID} from '@kepler.gl/constants';
-import {VisState, TooltipField, CompareType, SplitMapLayers} from 'reducers/vis-state-updaters';
+import {VisState, TooltipField, CompareType, SplitMapLayers} from 'reducers';
+
 import KeplerTable, {Field} from './table-utils/kepler-table';
 
 export type LayersToRender = {
