@@ -50,10 +50,14 @@ import {
 } from '@kepler.gl/types';
 
 import {ParsedFilter} from 'schemas';
-import KeplerTable, {FilterRecord, Datasets, FilterDatasetOpt} from './table-utils/kepler-table';
-import {DataContainerInterface} from './table-utils/data-container-interface';
-import { LAYER_TYPES } from '../types';
-import { getCentroid } from '../h3-hexagon-layer';
+import KeplerTable, {
+  FilterRecord,
+  Datasets,
+  FilterDatasetOpt
+} from 'reducers/table-utils/kepler-table';
+import {DataContainerInterface} from 'reducers/table-utils/data-container-interface';
+import {LAYER_TYPES} from '../types';
+import {getCentroid} from '../h3-hexagon-layer';
 
 export type FilterResult = {
   filteredIndexForDomain?: number[];
@@ -1092,7 +1096,7 @@ export function filterDatasetCPU<T extends StateType>(state: T, dataId: string):
  * Validate parsed filters with datasets and add filterProps to field
  */
 export function validateFiltersUpdateDatasets(
-  state: {datasets: Datasets, layers: Layer[]},
+  state: {datasets: Datasets; layers: Layer[]},
   filtersToValidate: ParsedFilter[] = []
 ): {
   validated: Filter[];

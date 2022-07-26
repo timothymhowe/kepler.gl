@@ -31,7 +31,8 @@ import {
   arcLayerMeta
 } from 'test/helpers/layer-utils';
 
-import {KeplerGlLayers, copyTable, copyTableAndUpdate} from '@kepler.gl/layers';
+import {KeplerGlLayers} from '@kepler.gl/layers';
+import {copyTable, copyTableAndUpdate} from 'reducers/table-utils';
 
 const {LineLayer} = KeplerGlLayers;
 const columns = {
