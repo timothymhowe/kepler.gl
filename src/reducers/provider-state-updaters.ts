@@ -20,7 +20,7 @@
 
 import {withTask} from 'react-palm/tasks';
 import {default as Console} from 'global/console';
-import {generateHashId, getError, toArray} from '@kepler.gl/utils';
+import {generateHashId, getError, isPlainObject, toArray} from '@kepler.gl/utils';
 import {
   EXPORT_FILE_TO_CLOUD_TASK,
   ACTION_TASK,
@@ -47,7 +47,6 @@ import {
   OVERWRITE_MAP_ID
 } from '@kepler.gl/constants';
 
-import {isPlainObject} from '@kepler.gl/layers';
 import {FILE_CONFLICT_MSG} from '../cloud-providers';
 import {DATASET_HANDLERS} from '@kepler.gl/processors';
 

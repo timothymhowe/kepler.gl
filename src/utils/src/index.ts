@@ -29,6 +29,11 @@ export {
 export {default as domtoimage} from './dom-to-image';
 
 export * from './aggregate-utils';
+export * from './data-utils';
+export * from './dataset-utils';
+export * from './export-map-html';
+export * from './export-utils';
+export * from './filter-utils';
 export * from './color-utils';
 export * from './gl-utils';
 export * from './locale-utils';

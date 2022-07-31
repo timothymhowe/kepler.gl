@@ -18,108 +18,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import uniq from 'lodash.uniq';
 import {console as globalConsole} from 'global/window';
 import {ALL_FIELD_TYPES} from '@kepler.gl/constants';
-import KeplerTable, {Datasets} from 'reducers/table-utils/kepler-table';
 import {Analyzer, DATA_TYPES as AnalyzerDATA_TYPES} from 'type-analyzer';
 import assert from 'assert';
 
-import {ProtoDataset} from 'actions';
-import {ProcessorResult, RGBColor, RowData, Field} from '@kepler.gl/types';
+import {ProcessorResult, RGBColor, RowData, Field, FieldPair} from '@kepler.gl/types';
 
-import {hexToRgb} from '@kepler.gl/utils';
 import {notNullorUndefined, isPlainObject} from './data-utils';
 import {range} from 'd3-array';
-
-// apply a color for each dataset
-// to use as label colors
-const datasetColors = [
-  '#8F2FBF',
-  '#005CFF',
-  '#C06C84',
-  '#F8B195',
-  '#547A82',
-  '#3EACA8',
-  '#A2D4AB'
-].map(hexToRgb);
-
-export const ACCEPTED_ANALYZER_TYPES = [
-  AnalyzerDATA_TYPES.DATE,
-  AnalyzerDATA_TYPES.TIME,
-  AnalyzerDATA_TYPES.DATETIME,
-  AnalyzerDATA_TYPES.NUMBER,
-  AnalyzerDATA_TYPES.INT,
-  AnalyzerDATA_TYPES.FLOAT,
-  AnalyzerDATA_TYPES.BOOLEAN,
-  AnalyzerDATA_TYPES.STRING,
-  AnalyzerDATA_TYPES.GEOMETRY,
-  AnalyzerDATA_TYPES.GEOMETRY_FROM_STRING,
-  AnalyzerDATA_TYPES.PAIR_GEOMETRY_FROM_STRING,
-  AnalyzerDATA_TYPES.ZIPCODE,
-  AnalyzerDATA_TYPES.ARRAY,
-  AnalyzerDATA_TYPES.OBJECT
-];
-
-const IGNORE_DATA_TYPES = Object.keys(AnalyzerDATA_TYPES).filter(
-  type => !ACCEPTED_ANALYZER_TYPES.includes(type)
-);
-
-/**
- * Random color generator
- */
-function* generateColor(): Generator<RGBColor> {
-  let index = 0;
-  while (index < datasetColors.length + 1) {
-    if (index === datasetColors.length) {
-      index = 0;
-    }
-    yield datasetColors[index++];
-  }
-}
-
-export const datasetColorMaker = generateColor();
-
-/** @type {typeof import('./dataset-utils').getNewDatasetColor} */
-export function getNewDatasetColor(datasets: Datasets): RGBColor {
-  const presetColors = datasetColors.map(String);
-  const usedColors = uniq(Object.values(datasets).map(d => String(d.color))).filter(c =>
-    presetColors.includes(c)
-  );
-
-  if (usedColors.length === presetColors.length) {
-    // if we already depleted the pool of color
-    return datasetColorMaker.next().value;
-  }
-
-  let color = datasetColorMaker.next().value;
-  while (usedColors.includes(String(color))) {
-    color = datasetColorMaker.next().value;
-  }
-
-  return color;
-}
-
-/**
- * Take datasets payload from addDataToMap, create datasets entry save to visState
- */
-export function createNewDataEntry(
-  {info, data, ...opts}: ProtoDataset,
-  datasets: Datasets = {}
-): Datasets {
-  const validatedData = validateInputData(data);
-  if (!validatedData) {
-    return {};
-  }
-
-  info = info || {};
-  const color = info.color || getNewDatasetColor(datasets);
-
-  const keplerTable = new KeplerTable({info, data: validatedData, color, ...opts});
-  return {
-    [keplerTable.id]: keplerTable
-  };
-}
+import {hexToRgb} from './color-utils';
 
 /**
  * Field name prefixes and suffixes which should not be considered
@@ -212,7 +120,13 @@ const METRIC_DEFAULT_FIELDS = [
  *
  * @param dataset
  */
-export function findDefaultColorField({fields, fieldPairs = []}: KeplerTable): null | Field {
+export function findDefaultColorField({
+  fields,
+  fieldPairs = []
+}: {
+  fields: Field[];
+  fieldPairs: FieldPair[];
+}): null | Field {
   const fieldsWithoutExcluded = fields.filter(field => {
     if (field.type !== ALL_FIELD_TYPES.real && field.type !== ALL_FIELD_TYPES.integer) {
       // Only select numeric fields.
@@ -284,6 +198,54 @@ export function findDefaultColorField({fields, fieldPairs = []}: KeplerTable): n
   // No matches
   return null;
 }
+
+// apply a color for each dataset
+// to use as label colors
+const datasetColors = [
+  '#8F2FBF',
+  '#005CFF',
+  '#C06C84',
+  '#F8B195',
+  '#547A82',
+  '#3EACA8',
+  '#A2D4AB'
+].map(hexToRgb);
+
+export const ACCEPTED_ANALYZER_TYPES = [
+  AnalyzerDATA_TYPES.DATE,
+  AnalyzerDATA_TYPES.TIME,
+  AnalyzerDATA_TYPES.DATETIME,
+  AnalyzerDATA_TYPES.NUMBER,
+  AnalyzerDATA_TYPES.INT,
+  AnalyzerDATA_TYPES.FLOAT,
+  AnalyzerDATA_TYPES.BOOLEAN,
+  AnalyzerDATA_TYPES.STRING,
+  AnalyzerDATA_TYPES.GEOMETRY,
+  AnalyzerDATA_TYPES.GEOMETRY_FROM_STRING,
+  AnalyzerDATA_TYPES.PAIR_GEOMETRY_FROM_STRING,
+  AnalyzerDATA_TYPES.ZIPCODE,
+  AnalyzerDATA_TYPES.ARRAY,
+  AnalyzerDATA_TYPES.OBJECT
+];
+
+const IGNORE_DATA_TYPES = Object.keys(AnalyzerDATA_TYPES).filter(
+  type => !ACCEPTED_ANALYZER_TYPES.includes(type)
+);
+
+/**
+ * Random color generator
+ */
+function* generateColor(): Generator<RGBColor> {
+  let index = 0;
+  while (index < datasetColors.length + 1) {
+    if (index === datasetColors.length) {
+      index = 0;
+    }
+    yield datasetColors[index++];
+  }
+}
+
+export const datasetColorMaker = generateColor();
 
 /**
  * Validate input data, adding missing field types, rename duplicate columns
