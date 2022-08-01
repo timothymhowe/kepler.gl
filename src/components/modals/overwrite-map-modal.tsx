@@ -24,10 +24,9 @@ import {CenterVerticalFlexbox} from 'components/common/styled-components';
 import {UploadAnimation} from './status-panel';
 import ImageModalContainer from './image-modal-container';
 import {FormattedMessage} from '@kepler.gl/localization';
-import {Provider} from 'cloud-providers';
-
 import {ImageModalContainerProps} from './image-modal-container';
 import {cleanupExportImage} from 'actions';
+import { Provider } from '@kepler.gl/cloud-providers';
 
 /** @typedef {import('./overwrite-map-modal').OverwriteMapModalProps} OverwriteMapModalProps */
 
