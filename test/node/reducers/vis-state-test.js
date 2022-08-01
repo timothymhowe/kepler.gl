@@ -34,13 +34,8 @@ import {INITIAL_VIS_STATE, DEFAULT_ANIMATION_CONFIG} from 'reducers/vis-state-up
 import {serializeLayer} from 'reducers/vis-state-merger';
 import {processCsvData, processGeojson} from '@kepler.gl/processors';
 import {defaultInteractionConfig} from 'reducers/vis-state-updaters';
-import {
-  Layer,
-  KeplerGlLayers,
-  getDefaultFilter,
-  createNewDataEntry,
-  maybeToDate
-} from '@kepler.gl/layers';
+import {Layer, KeplerGlLayers} from '@kepler.gl/layers';
+import {getDefaultFilter, createNewDataEntry, maybeToDate} from 'reducers/layer-utils';
 import {createDataContainer} from '../../../src/reducers/table-utils';
 import {
   ALL_FIELD_TYPES,
