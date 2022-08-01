@@ -31,13 +31,12 @@ import {receiveMapConfigUpdater as styleMapConfigUpdater} from './map-style-upda
 import {filesToDataPayload} from '@kepler.gl/processors';
 import {payload_, apply_, with_, if_, compose_, merge_, pick_} from './composer-helpers';
 import {VisState} from './vis-state-updaters';
-import {MapState} from '@kepler.gl/types';
+import {MapState, ParsedConfig} from '@kepler.gl/types';
 import {UiState} from './ui-state-updaters';
 import {MapStyle} from './map-style-updaters';
 import {ProviderState} from './provider-state-updaters';
 import {AddDataToMapPayload} from 'actions/actions';
 import {loadFilesSuccessUpdaterAction} from 'actions/vis-state-actions';
-import {ParsedConfig} from 'schemas';
 import {Layer} from '@kepler.gl/layers';
 import {isPlainObject} from '@kepler.gl/utils';
 import {findMapBounds} from './layer-utils/data-utils';

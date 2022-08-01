@@ -46,10 +46,10 @@ import {
   FeatureValue,
   LineChart,
   TimeRangeFilter,
-  RangeFieldDomain
+  RangeFieldDomain,
+  ParsedFilter
 } from '@kepler.gl/types';
 
-import {ParsedFilter} from 'schemas';
 import KeplerTable, {
   FilterRecord,
   Datasets,
